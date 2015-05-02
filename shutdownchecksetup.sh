@@ -3,7 +3,7 @@ echo '#!/bin/bash
 #This is GPIO 7 (pin 26 on the pinout diagram).
 #This is an input from ATXRaspi to the Pi.
 #When button is held for ~3 seconds, this pin will become HIGH signalling to this script to poweroff the Pi.
-SHUTDOWN=7
+SHUTDOWN=20
 REBOOTPULSEMINIMUM=200      #reboot pulse signal should be at least this long
 REBOOTPULSEMAXIMUM=600      #reboot pulse signal should be at most this long
 echo "$SHUTDOWN" > /sys/class/gpio/export
@@ -15,7 +15,7 @@ echo "in" > /sys/class/gpio/gpio$SHUTDOWN/direction
 #This is GPIO 8 (pin 24 on the pinout diagram).
 #This is an output from Pi to ATXRaspi and signals that the Pi has booted.
 #This pin is asserted HIGH as soon as this script runs (by writing "1" to /sys/class/gpio/gpio8/value)
-BOOT=8
+BOOT=21
 echo "$BOOT" > /sys/class/gpio/export
 echo "out" > /sys/class/gpio/gpio$BOOT/direction
 echo "1" > /sys/class/gpio/gpio$BOOT/value
